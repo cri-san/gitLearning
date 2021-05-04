@@ -8,7 +8,7 @@ int main(int argc,char *argv[])
 		strcpy(a,argv[1]);
 		strcpy(b,argv[2]);
 		FILE *fp;
-		int str=0,word=0;
+		int charCount=0,wordCount=0;
 		char c;
 		if((fp=fopen(b,"r"))==NULL)//判断文件打开是否正确 
 		{
@@ -22,18 +22,18 @@ int main(int argc,char *argv[])
 		{		
 			if((c==' ' || c==',' || c=='\n')&&(t!=' ' && t!=',' && t!='\n'))//如果c为空格逗号换行并且前一个字符不为空格逗号换行则单词数加1 
 			{
-				word++;
+				wordCount++;
 			}
-			str++;
+			charCount++;
 			t=c;
 			c=fgetc(fp);
 		}
 		if(t!=' ' && t!= ',' && t!='\n')
-			word++;
+			wordCount++;
 		if(a[1]=='c'){
-			printf("字符数:%d\n",str);
+			printf("字符数:%d\n",charCount);
 		}else if(a[1]=='w'){
-			printf("单词数:%d\n",word);
+			printf("单词数:%d\n",wordCount);
 		}else{
 			printf("输入错误\n"); 
 		} 
